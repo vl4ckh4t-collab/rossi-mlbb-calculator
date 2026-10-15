@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fff0f5"><meta name="description" content="ROSSI MLBB Diamond ဈေးနှုန်းနှင့် အမြတ်တွက်စက် | Diamond price and profit calculator">
+  <title>ROSSI MLBB Calculator</title><link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="sakura">
+<main class="app">
+<header class="topbar"><div class="brand"><div class="logo" aria-hidden="true">🌸</div><div>
+<p class="eyebrow">ROSSI • MLBB PRICE TOOL</p><h1>ROSSI MLBB Calculator</h1>
+<p class="subheading">MLBB Diamond ဈေးနှုန်းနှင့် အမြတ်တွက်စက် · Diamond Price &amp; Profit Calculator</p>
+</div></div><label class="theme-control"><span>Theme / အရောင်</span><select id="themeSelect" aria-label="Theme ပြောင်းရန်"><option value="sakura">🌸 Sakura</option><option value="blue">💙 Ocean Blue</option><option value="mint">🍃 Mint</option><option value="dark">🖤 Dark</option></select></label></header>
+<section class="hero"><div><span class="pill">YOUR PERSONAL TOOL • ကိုယ်ပိုင်ကိရိယာ</span><h2>ကိုယ်ပိုင်ဈေးနှုန်း<br><span>တွက်ချက်လိုက်ပါ</span></h2><p>ဝယ်ဈေးနဲ့ အမြတ်ရာခိုင်နှုန်းကို ထည့်လိုက်တာနဲ့ ရောင်းဈေးကို ချက်ချင်းတွက်ပေးမယ်။<br>Enter your cost and profit percentage to calculate the selling price instantly.</p></div><div class="flower-art" aria-hidden="true">🌸</div></section>
+<section class="panel"><div class="section-title"><div><span class="step">01</span><h2>ဈေးနှုန်းသတ်မှတ်ရန် · Set Your Price</h2></div><span class="muted">MMK</span></div>
+<div class="field-grid"><label class="field"><span>ဝယ်ဈေး · Cost Price (MMK)</span><input id="cost" type="number" min="0" step="any" value="10000" inputmode="decimal"></label><label class="field"><span>အမြတ် · Profit (%)</span><input id="profit" type="number" min="0" max="10000" step="any" value="10" inputmode="decimal"></label></div>
+<div class="quick-profits" aria-label="အမြတ်နှုန်း အမြန်ရွေးရန် · Quick profit selection"><button type="button" data-profit="5">5%</button><button type="button" data-profit="10" class="selected">10%</button><button type="button" data-profit="15">15%</button><button type="button" data-profit="20">20%</button><button type="button" data-profit="25">25%</button></div></section>
+<section class="results" aria-live="polite"><article class="result-card main-result"><p>အကြံပြုရောင်းဈေး · Suggested Selling Price</p><div class="money"><span id="sellingPrice">11,000</span><small>MMK</small></div><p class="result-note">ဝယ်ဈေး + သတ်မှတ်အမြတ် · Cost + Profit</p></article><div class="result-pair"><article class="result-card"><p>ဝယ်ဈေး · Cost Price</p><strong><span id="costDisplay">10,000</span> <small>MMK</small></strong></article><article class="result-card"><p>အမြတ်ငွေ · Profit Amount</p><strong class="profit-text"><span id="profitAmount">1,000</span> <small>MMK</small></strong></article></div></section>
+<section class="panel"><div class="section-title"><div><span class="step">02</span><h2>Diamond Plan ဈေးနှုန်းစာရင်း · Diamond Price Plans</h2></div></div>
+<p class="hint">Plan တစ်ခုချင်းစီရဲ့ ဝယ်ဈေးကို ပြင်နိုင်ပါတယ်။ ဈေးနှုန်းများကို သင်ကိုယ်တိုင်ထည့်သွင်းရမှာဖြစ်ပြီး အလိုအလျောက် Smile.one ဈေးနှုန်းမဟုတ်ပါ။<br>Edit each plan's cost below. Prices are sample values and are not live Smile.one prices.</p>
+<div class="table-wrap"><table><thead><tr><th>Plan / အရေအတွက်</th><th>ဝယ်ဈေး · Cost (MMK)</th><th>ရောင်းဈေး · Selling (MMK)</th><th>အမြတ် · Profit (MMK)</th><th>Action</th></tr></thead><tbody id="planRows"></tbody></table></div>
+<form id="addPlanForm" class="add-plan"><label class="field"><span>Plan အမည် · Plan Name</span><input id="planName" placeholder="ဥပမာ - 86 Diamonds" required maxlength="40"></label><label class="field"><span>ဝယ်ဈေး · Cost (MMK)</span><input id="planCost" type="number" min="0" step="any" placeholder="ဥပမာ - 2500" required></label><button class="primary-btn" type="submit">＋ Plan ထည့်ရန် · Add Plan</button></form>
+<button id="resetPlans" class="text-btn" type="button">နမူနာ Plan များ ပြန်ထားရန် · Reset Sample Plans</button></section>
+<footer><p>🌸 <strong>ROSSI MLBB Calculator</strong></p><p>Powered by <a href="https://t.me/enola257" target="_blank" rel="noopener noreferrer">@enola257</a></p><p class="footer-note">ဤကိရိယာသည် ဈေးတွက်စက်သာဖြစ်ပြီး ငွေပေးချေမှု သို့မဟုတ် Diamond ဖြည့်သွင်းမှု မလုပ်ဆောင်ပါ။<br>This is a price calculator only. It does not process payments or top up Diamonds.</p></footer>
+</main><script src="script.js"></script></body></html>
