@@ -1,57 +1,86 @@
 <!doctype html>
 <html lang="my">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#e6f1ff">
-<title>ROSSI MLBB Calculator</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14243f">
+  <meta name="description" content="ROSSI MLBB Calculator — Diamond MMK price and profit calculator">
+  <title>ROSSI MLBB Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<main class="page">
-  <header class="heading">
-    <div class="brand">🌸 ROSSI MLBB Calculator</div>
-    <div class="sub">MLBB Diamond · MLBB Diamond Price & Profit Calculator</div>
+<body data-theme="sakura">
+  <div class="watermark" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/rossi-logo.jpg" alt="ROSSI Sakura logo" class="brand-logo">
+      <div class="brand-name">
+        <div class="brand-title">ROSSI <span>💎</span></div>
+        <div class="brand-subtitle">MLBB BRL Coin Table Calculator</div>
+        <div class="brand-tagline">Fast · Accurate · Reliable</div>
+      </div>
+    </div>
+    <nav class="theme-picker" aria-label="Choose theme">
+      <button type="button" class="theme-btn blue" data-theme="blue">💎 Blue</button>
+      <button type="button" class="theme-btn sakura" data-theme="sakura">🌸 Sakura</button>
+      <button type="button" class="theme-btn dark" data-theme="dark">🎮 Gaming Dark</button>
+    </nav>
   </header>
 
-  <nav class="theme-picker" aria-label="Choose theme">
-    <button type="button" class="theme-btn blue" data-theme="blue">💙 Blue</button>
-    <button type="button" class="theme-btn sakura" data-theme="sakura">🌸 Sakura</button>
-    <button type="button" class="theme-btn mint" data-theme="mint">🍃 Mint</button>
-    <button type="button" class="theme-btn peach" data-theme="peach">💗 Peach</button>
-  </nav>
+  <main class="layout">
+    <section class="main-column">
+      <section class="control-panel panel">
+        <div class="field">
+          <label for="smileRate">💰 Smile code ဈေးနှုန်း / Smile Code Rate (MMK)</label>
+          <div class="input-wrap"><span>◎</span><input id="smileRate" type="number" min="0" step="any" inputmode="decimal" placeholder="ဥပမာ - 80000" value="80000"><b>MMK</b></div>
+        </div>
+        <div class="field">
+          <label for="profitRate">％ အမြတ် % ရွေးပါ / Select Profit %</label>
+          <div class="select-wrap"><span>％</span><select id="profitRate" aria-label="Select profit percentage"></select></div>
+        </div>
+        <nav class="quick-tabs" aria-label="Telegram links">
+          <a class="quick-tab channel" href="https://t.me/diamondshop644" target="_blank" rel="noopener"><span class="tab-icon">📢</span><span><strong>Channel Join</strong><small>t.me/diamondshop644</small></span></a>
+          <a class="quick-tab reseller" href="https://t.me/diamondshop64" target="_blank" rel="noopener"><span class="tab-icon">👥</span><span><strong>Resell Gp</strong><small>t.me/diamondshop64</small></span></a>
+          <a class="quick-tab diamond" href="https://t.me/enola257" target="_blank" rel="noopener"><span class="tab-icon">💎</span><span><strong>Diamond ဝယ်မယ်</strong><small>t.me/enola257</small></span></a>
+        </nav>
+      </section>
 
-  <section class="controls">
-    <label for="smileRate">Smile Code ဈေးနှုန်း ထည့်ပါ / Enter Smile Code Rate (MMK per Coin)</label>
-    <input id="smileRate" type="number" min="0" step="any" placeholder="ဥပမာ - 7*****" inputmode="decimal">
-    <label for="profitRate">အမြတ် % ရွေးပါ / Select Profit %</label>
-    <select id="profitRate" aria-label="Profit percentage">
-      <!-- options are generated in 0.5% increments by script.js -->
-    </select>
-  </section>
+      <section class="table-panel panel">
+        <div class="section-title"><span>💎</span> MLBB BRL Coin Table</div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>No.</th><th>Dia Plan</th><th>Org Dia Plan</th><th>Coin Price</th><th>MMK Result</th><th>အမြတ် / Profit</th><th>Total MMK</th></tr></thead>
+            <tbody id="plans"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
 
-  <nav class="quick-tabs" aria-label="Telegram links">
-    <a class="quick-tab" href="https://t.me/diamondshop644" target="_blank" rel="noopener">📢 Channel Join</a>
-    <a class="quick-tab" href="https://t.me/diamondshop64" target="_blank" rel="noopener">👥 Resell Gp</a>
-    <a class="quick-tab" href="https://t.me/enola257" target="_blank" rel="noopener">💎 Diamond ဝယ်မယ်</a>
-  </nav>
-
-  <div class="table-scroll">
-    <table>
-      <thead>
-        <tr>
-          <th>No.</th><th>Dia Plan</th><th>Org Dia Plan</th><th>Coin Price</th>
-          <th>MMK Result</th><th>အမြတ် / Profit</th><th>Total MMK</th>
-        </tr>
-      </thead>
-      <tbody id="plans"></tbody>
-    </table>
-  </div>
-  <footer>
-    <span>🌸 Powered by <a href="https://t.me/enola257" target="_blank" rel="noopener">@enola257</a></span>
-    <span>ROSSI MLBB Calculator</span>
-  </footer>
-</main>
-<script src="script.js"></script>
+    <aside class="side-column">
+      <section class="side-brand">
+        <img src="assets/rossi-logo.jpg" alt="" class="side-logo">
+        <div><div class="side-brand-title">ROSSI <span>💎</span></div><div class="side-brand-script">Calculator</div></div>
+      </section>
+      <section class="features panel">
+        <h2>✨ Website Features</h2>
+        <ul>
+          <li>MLBB BRL Coin Table (အလွယ်တကူတွက်ချက်နိုင်)</li>
+          <li>Smile Code ဈေးနှုန်း ထည့်သွင်းနိုင်</li>
+          <li>အမြတ် % ရွေးချယ်နိုင် (0% – 100%)</li>
+          <li>Theme ၃ မျိုး (Blue / Sakura / Gaming Dark)</li>
+          <li>Telegram Link Tab ၃ ခု</li>
+          <li>Double Dia Plan (50+ / 150+ / 250+ / 500+)</li>
+          <li>Mobile & Desktop အဆင်ပြေစွာအသုံးပြုနိုင်</li>
+        </ul>
+        <div class="hire-banner"><span>💎</span><strong>Dia ဖြည့်တဲ့ bot ငှားလိုပါက<br>ငှားနိုင်ပါတယ်။</strong></div>
+      </section>
+      <section class="side-links">
+        <a class="side-link channel" href="https://t.me/diamondshop644" target="_blank" rel="noopener"><span>📢</span><span><b>Channel Join</b><small>t.me/diamondshop644</small></span><i>➜</i></a>
+        <a class="side-link reseller" href="https://t.me/diamondshop64" target="_blank" rel="noopener"><span>👥</span><span><b>Resell Gp</b><small>t.me/diamondshop64</small></span><i>➜</i></a>
+        <a class="side-link diamond" href="https://t.me/enola257" target="_blank" rel="noopener"><span>💎</span><span><b>Diamond ဝယ်မယ်</b><small>t.me/enola257</small></span><i>➜</i></a>
+        <footer>Thank you for using 💗 <b>ROSSI Calculator</b> 💗<br><small>Powered by <a href="https://t.me/enola257" target="_blank" rel="noopener">@enola257</a></small></footer>
+      </section>
+    </aside>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
