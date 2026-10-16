@@ -78,8 +78,10 @@ function render() {
       enteredRate > 0 ? money(profit) : "—",
       enteredRate > 0 ? money(base + profit) : "—"
     ];
+    const labels = ["No.", "Dia Plan", "Org Dia Plan", "Coin Price", "MMK Result", "အမြတ် / Profit", "Total MMK"];
     values.forEach((value, col) => {
       const td = document.createElement("td");
+      td.dataset.label = labels[col];
       td.textContent = value;
       if (col >= 3) td.classList.add("money");
       tr.append(td);
