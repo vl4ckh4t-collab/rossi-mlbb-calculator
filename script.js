@@ -19,26 +19,27 @@ const plans = [
   { dia: "3688", org: "3099+589", coin: 2424 },
   { dia: "5532", org: "4649+883", coin: 3660 },
   { dia: "9288", org: "7740+1548", coin: 6079 },
-  { section: "Double Dia Plan" },
+  { section: "⭐ Double Dia Plan" },
   { dia: "50+", org: "", coin: 39 },
   { dia: "150+", org: "", coin: 116.9 },
   { dia: "250+", org: "", coin: 187.5 },
   { dia: "500+", org: "", coin: 385 }
 ];
-const money = n => Number.isFinite(n) ? Math.round(n).toLocaleString("en-US") : "—";
+
 const rateInput = document.getElementById("smileRate");
 const profitInput = document.getElementById("profitRate");
 const tbody = document.getElementById("plans");
+const money = n => Number.isFinite(n) ? n.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2}) : "—";
 
-// Match the reference image: profit can be selected in 0.5% increments.
 for (let p = 0; p <= 100.0001; p += 0.5) {
+  const value = p.toFixed(1).replace(/\.0$/, "");
   const option = document.createElement("option");
-  option.value = p.toFixed(1).replace(/\.0$/, "");
-  option.textContent = `${option.value}%`;
+  option.value = value;
+  option.textContent = `${value}%`;
+  if (value === "3") option.selected = true;
   profitInput.append(option);
 }
 
-// Four selectable themes: Blue, Sakura, Mint, and Peach.
 const themeButtons = document.querySelectorAll(".theme-btn");
 function setTheme(theme) {
   document.body.dataset.theme = theme;
@@ -46,15 +47,18 @@ function setTheme(theme) {
   try { localStorage.setItem("rossi-mlbb-theme", theme); } catch (_) {}
 }
 themeButtons.forEach(button => button.addEventListener("click", () => setTheme(button.dataset.theme)));
-let savedTheme = "blue";
-try { savedTheme = localStorage.getItem("rossi-mlbb-theme") || "blue"; } catch (_) {}
-setTheme(["blue", "sakura", "mint", "peach"].includes(savedTheme) ? savedTheme : "blue");
+let savedTheme = "sakura";
+try { savedTheme = localStorage.getItem("rossi-mlbb-theme") || "sakura"; } catch (_) {}
+setTheme(["blue", "sakura", "dark"].includes(savedTheme) ? savedTheme : "sakura");
 
 function render() {
   tbody.replaceChildren();
-  const rate = Math.max(0, Number(rateInput.value) || 0);
+  const enteredRate = Math.max(0, Number(rateInput.value) || 0);
+  const effectiveRate = enteredRate / 1000; // e.g. 80000 => 80, matching the original calculator
   const profitPercent = Number(profitInput.value) || 0;
-  plans.forEach((plan, index) => {
+  let planNo = 0;
+
+  plans.forEach(plan => {
     const tr = document.createElement("tr");
     if (plan.section) {
       tr.className = "section-row";
@@ -65,22 +69,19 @@ function render() {
       tbody.append(tr);
       return;
     }
-    const effectiveRate = rate / 1000; // Original calculator treats 80000 as rate 80
+    planNo += 1;
     const base = plan.coin * effectiveRate;
     const profit = base * profitPercent / 100;
     const values = [
-      index < 20 ? index + 1 : index,
-      plan.dia,
-      plan.org,
-      String(plan.coin),
-      rate > 0 ? money(base) : "",
-      rate > 0 ? money(profit) : "",
-      rate > 0 ? money(base + profit) : ""
+      planNo, plan.dia, plan.org || "–", String(plan.coin),
+      enteredRate > 0 ? money(base) : "—",
+      enteredRate > 0 ? money(profit) : "—",
+      enteredRate > 0 ? money(base + profit) : "—"
     ];
     values.forEach((value, col) => {
       const td = document.createElement("td");
       td.textContent = value;
-      if (col >= 3) td.className = "money";
+      if (col >= 3) td.classList.add("money");
       tr.append(td);
     });
     tbody.append(tr);
